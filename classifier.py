@@ -9,7 +9,7 @@ class Classifier(object):
 	
 	def trainvectorizer(self,corpus):
 		
-		self.vectorizer.fit_transfrom(corpus)
+		self.vectorizer.fit_transform(corpus)
 		print "vectrizer train is over...."
 
 
@@ -20,7 +20,7 @@ class Classifier(object):
 
 	def getferture(self,text):#return a feature array
 		
-		tfidf = self.vectorizer.transfrom(text)
+		tfidf = self.vectorizer.transform(text)
 		matrx = tfidf.toarray()
 		array = matrx[0]
 		return array
