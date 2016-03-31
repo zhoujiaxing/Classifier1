@@ -21,7 +21,9 @@ if __name__=="__main__":
 	corpus_vec = []
 	for cate in cates:
 		text = cd.getTextData(Text_number,cate)
-		corpus_vec.append(text)
+		if text == None:
+			print "get Fial..."
+		corpus_vec.extend(text)
 	cf.trainvectorizer(corpus_vec)
 
 	#train classifier category
