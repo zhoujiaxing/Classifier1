@@ -18,7 +18,7 @@ class Classifier(object):
 		self.classifier.fit(train_X,train_Y)
 		print "classifier train is over ...."
 
-	def getferture(self,text):#return a feature array
+	def getfeature(self,text):#return a feature array
 		
 		tfidf = self.vectorizer.transform(text)
 		matrx = tfidf.toarray()
