@@ -17,7 +17,7 @@ if __name__=="__main__":
 	collection = client.getdata("hinews","article")
 	cd.setcollection(collection)
 	#train vectorizer
-	Text_number = 100
+	Text_number = 1000
 	corpus_vec = []
 	for cate in cates:
 		text = cd.getTextData(Text_number,cate)
@@ -29,7 +29,7 @@ if __name__=="__main__":
 	#train classifier category
 
 	category = "Auto"
-	Train_number = 100
+	Train_number = 1000
 	Train_X = []
 	Train_Y = []
 
@@ -53,4 +53,11 @@ if __name__=="__main__":
 		Train_X.append(feature)
 		Train_Y.append(0)
 	cf.trainclassifier(Train_X,Train_Y)
+	
+	print "test is start...."
+	
+	texts = cd.getTextData(100,catagory)
+	for text in texts:
+		feature = cf.getfeature(text)
+		print cf.getresult(feature)
 	print "game over...."
