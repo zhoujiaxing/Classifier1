@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 class Classifier(object):
 	def __init__(self):
 
-		self.classifier = LogisticRegression()
+		self.classifier = LogisticRegression(intercept_scaling=100)
 		self.vectorizer = TfidfVectorizer()
 	
 	def trainvectorizer(self,corpus):
@@ -19,9 +19,7 @@ class Classifier(object):
 		print "classifier train is over ...."
 
 	def getfeature(self,text):#return a feature array
-		
-		tfidf = self.vectorizer.transform(text)
-		matrx = tfidf.toarray()
+		matrx = self.vectorizer.transform([text]).toarray()
 		array = matrx[0]
 		return array
 		

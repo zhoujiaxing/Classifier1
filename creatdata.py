@@ -12,13 +12,33 @@ class CreatData(object):
 	'''
 	def setcollection(self,collection):
 		self.collection = collection
+
 	def getTextData(self,num,category,refuse=None):#
+                datas = self.collection.find()
+                corpus = []
+                count = 0
+                for data in datas:
+                        categorys = data['category']
+                        if (category in categorys) and (refuse not in categorys):
+                                text = data['text']
+                                corpus.append(text)
+                                count = count + 1
+                        if count == num:
+                                break
+                if count == num:
+                        return corpus
+                else:
+			print count,category
+                        return corpus
+
+	'''
+	def getTextDatas(self,num,category,refuse):#
 		datas = self.collection.find()
 		corpus = []
 		count = 0
 		for data in datas:
 			categorys = data['category']
-			if (category in category) and (refuse not in categorys):
+			if (category in categorys) and (refuse not in categorys) :
 				text = data['text']
 				corpus.append(text)
 				count = count + 1
@@ -28,3 +48,4 @@ class CreatData(object):
 			return corpus
 		else:
 			return None
+	'''
