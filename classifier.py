@@ -12,8 +12,9 @@ class Classifier(object):
 		self.vectorizer.fit_transform(corpus)
 		file1 = open("feature_names.txt","w")
 		names = self.vectorizer.get_feature_names()
+		print len(names)
 		for name in names:
-			file1.write(name.encode('utf8'))
+			file1.write(name.encode('utf8')+"\n")
 		file1.close()
 		print "vectrizer train is over...."
 
