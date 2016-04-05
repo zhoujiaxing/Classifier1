@@ -13,30 +13,22 @@ class CreatData(object):
 	def setcollection(self,collection):
 		self.collection = collection
 
-	def getTextData(self,num,category,refuse=None):#
-                datas = self.collection.find()
-                corpus = []
-                count = 0
-                for data in datas:
-			#print data
+	def getAllData(self):#
+		datas = self.collection.find()
+		corpus = {}
+		count = 0
+		for data in datas:
 			try:
-                       		categorys = data['category']
-                      		if category == categorys:
-                                	text = data['article']
-                               		corpus.append(text)
-                                	count = count + 1
+				category = data['category']
+				text = data['article']
+				if corpus.has_key(category):
+					corpus[category].append(text)
+				else:
+					corpus.update(category,[text])
 			except:
-				#print "Fiald in %d...."%count
-				category
-                        if count == num:
-                                break
-                if count == num:
-                        return corpus
-                else:
-			print count,category
-                        return corpus
-
-	'''
+				error
+		return corpus
+'''
 	def getTextDatas(self,num,category,refuse):#
 		datas = self.collection.find()
 		corpus = []
