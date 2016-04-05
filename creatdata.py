@@ -18,11 +18,16 @@ class CreatData(object):
                 corpus = []
                 count = 0
                 for data in datas:
-                        categorys = data['category']
-                        if (category in categorys) and (refuse not in categorys):
-                                text = data['text']
-                                corpus.append(text)
-                                count = count + 1
+			#print data
+			try:
+                       		categorys = data['category']
+                      		if category == categorys:
+                                	text = data['article']
+                               		corpus.append(text)
+                                	count = count + 1
+			except:
+				#print "Fiald in %d...."%count
+				category
                         if count == num:
                                 break
                 if count == num:

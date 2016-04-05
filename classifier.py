@@ -10,6 +10,11 @@ class Classifier(object):
 	def trainvectorizer(self,corpus):
 		
 		self.vectorizer.fit_transform(corpus)
+		file1 = open("feature_names.txt","w")
+		names = self.vectorizer.get_feature_names()
+		for name in names:
+			file1.write(name.encode('utf8'))
+		file1.close()
 		print "vectrizer train is over...."
 
 
